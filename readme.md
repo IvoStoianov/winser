@@ -89,7 +89,8 @@ The name of the service will be the same from your package.json "name" setting.
 
 ## Credits
 Thanks to
- - [José F. Romaniello](https://github.com/jfromaniello) <br />
+ - [José F. Romaniello](https://github.com/jfromaniello)
+
 This project is heavily inspired in 
  - [Node.js on windows by Tatham Oddie](http://blog.tatham.oddie.com.au/2011/03/16/node-js-on-windows/)
 
