@@ -1,7 +1,7 @@
 # WinSer - Forked
 
   Run node.js applications as windows services using [nssm](http://nssm.cc). 
-  This is a forked version of [jfromaniello/winser](https://github.com/jfromaniello/winser) to allow easily adding service user user.
+  This is a forked version of [jfromaniello/winser](https://github.com/jfromaniello/winser) to allow easily adding service user.
 
 ## Installation
 
@@ -89,7 +89,7 @@ The name of the service will be the same from your package.json "name" setting.
 
 ## Credits
 Thanks to
- - [José F. Romaniello](https://github.com/jfromaniello)
+ - [José F. Romaniello](https://github.com/jfromaniello) \n
 This project is heavily inspired in 
  - [Node.js on windows by Tatham Oddie](http://blog.tatham.oddie.com.au/2011/03/16/node-js-on-windows/)
 
