@@ -1,10 +1,11 @@
-# WinSer
+# WinSer - Forked
 
-  Run node.js applications as windows services using [nssm](http://nssm.cc).
+  Run node.js applications as windows services using [nssm](http://nssm.cc). 
+  This is a forked version of [jfromaniello/winser](https://github.com/jfromaniello/winser) to allow easily adding service user user.
 
 ## Installation
 
-    $ npm install winser
+    $ npm install winser-extended
 
 ## Command line arguments
 
@@ -18,6 +19,7 @@
     -p, --path <ARG1>             path to the node application you want to install as a service (current path by default)
     -n, --name <ARG1>             name for service (default: name from package.json)
     -d, --description <ARG1>      service description (default: description from package.json)
+    -u, --user <ARGS>             set service user
     --displayname <ARG1>          display name for service
     --startcmd <ARG1>             use this command for start service (default: scripts.start from package.json)
     --startuptype <ARG1>          set service startup type on boot (auto|manual|delayed|disabled) ("auto" by default)
@@ -86,9 +88,9 @@ Remember that the default npm action for "start" is "node server.js".
 The name of the service will be the same from your package.json "name" setting.
 
 ## Credits
-
+Thanks to
+ - [José F. Romaniello](https://github.com/jfromaniello)
 This project is heavily inspired in 
-
  - [Node.js on windows by Tatham Oddie](http://blog.tatham.oddie.com.au/2011/03/16/node-js-on-windows/)
 
 And it uses:
