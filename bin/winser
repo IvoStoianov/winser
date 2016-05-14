@@ -88,7 +88,7 @@ if (options.version) {
 }
 
 function log(message) {
-    if(options.silent) return;
+    if (options.silent) return;
     console.log(message);
 }
 
@@ -318,8 +318,41 @@ async.series([
             if (!options.user) {
                 return next();
             }
+            var userOptions = '';
+            if (Array.isArray(options.user)) {
+                switch (options.user.length) {
+                    case 1:
+                        var account = options.user.pop();
+                        if (/^[\W\d]*/g.test(account)) { // Invalid account
+                            userOptions = '';
+                        } else {
+                            userOptions = account;
+                        }
+                        break;
+                    case 2: // Username and password
+                        var username = options.user[0];
+                        var password = options.user[1];
 
-            var userOptions = Array.isArray(options.user) ? options.user.join(' ') : options.user;
+                        if (/^\\.+/g.test(username)) {
+                            username = '.' + username;
+                        }
+
+                        userOptions = username + ' ' + password;
+                        break;
+                    default:
+                        userOptions = options.user.join(' ');
+                        break;
+                }
+            } else {
+                if (/^[\W\d]*/g.test(options.user)) { // Invalid account
+                    userOptions = '';
+                } else {
+                    userOptions = options.user;
+                }
+            }
+            
+            if(!userOptions) return next();
+
             nssmExec('set', 'ObjectName ' + userOptions,
                 function(error) {
                     if (error) {
