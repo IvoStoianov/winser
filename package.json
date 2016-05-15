@@ -1,6 +1,6 @@
 {
   "name": "winser-extended",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Run a node.js application as a window service using nssm. Forked from http://jfromaniello.github.com/winser",
   "keywords": [
     "windows",
@@ -10,9 +10,13 @@
   ],
   "homepage": "https://github.com/IvoStoianov/winser",
   "author": {
-    "forked-by": "Ivaylo Stoyanov",
-    "email": "ivostoyanov94@gmail.com",
-    "crator": "Jose Fernando Romaniello"
+    "name": "Jose Fernando Romaniello",
+    "email": "jfromaniello@gmail.com",
+    "url": "http://joseoncode.com/"
+  },
+  "forked-by": {
+    "name": "Ivailo Stoianov",
+    "email": "ivostoianov94@gmail.com"
   },
   "repository": {
     "type": "git",

@@ -315,16 +315,19 @@ async.series([
             next();
         },
         function(next) {
-            if (!options.user) {
-                return next();
-            }
-            var userOptions = '';
+            if (!options.user) return next();
+
+            var invalidAccoutRegex = /^\s*[\\\/\.\s]+\s*$|.*[\\\/]$/g;
+            var userOptions = null;
             if (Array.isArray(options.user)) {
                 switch (options.user.length) {
+                    case 0: // Just to be sure
+                        userOptions = null;
+                        break;
                     case 1:
                         var account = options.user.pop();
-                        if (/^[\W\d]*/g.test(account)) { // Invalid account
-                            userOptions = '';
+                        if (invalidAccoutRegex.test(account)) { // Invalid account
+                            userOptions = null;
                         } else {
                             userOptions = account;
                         }
@@ -343,15 +346,15 @@ async.series([
                         userOptions = options.user.join(' ');
                         break;
                 }
-            } else {
-                if (/^[\W\d]*/g.test(options.user)) { // Invalid account
-                    userOptions = '';
+            } else { // Username only (string)
+                if (invalidAccoutRegex.test(options.user)) { // Invalid account
+                    userOptions = null;
                 } else {
                     userOptions = options.user;
                 }
             }
-            
-            if(!userOptions) return next();
+
+            if (!userOptions) return next(); // No valid user set so we skip to the next step
 
             nssmExec('set', 'ObjectName ' + userOptions,
                 function(error) {
