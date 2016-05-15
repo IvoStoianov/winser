@@ -368,7 +368,7 @@ async.series([
         function(next) {
             if (!options.set || options.set.length === 0) {
                 next();
-            } else {
+            } else if (Array.isArray(options.user)) {
                 async.each(options.set,
                     function(arg, callback) {
                         nssmExec('set', arg,
@@ -385,6 +385,15 @@ async.series([
                             next(error);
                         else
                             next();
+                    });
+            } else {
+                nssmExec('set', options.set,
+                    function(error) {
+                        if (error) {
+                            next('Set operation failed (' + options.set + ')');
+                        } else {
+                            next();
+                        }
                     });
             }
         },
