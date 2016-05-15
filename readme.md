@@ -33,8 +33,8 @@ I really like this method, in the package.json:
 
 ```js
   "scripts": {
-    "postinstall": "winser -i -s -c",
-    "preuninstall": "winser -r -x -s",
+    "postinstall": "winser-extended -i -s -c",
+    "preuninstall": "winser-extended -r -x -s",
   }
 ```
 
@@ -63,8 +63,8 @@ Add these two scripts to your package.json:
 
 ```js
   "scripts": {
-    "install-windows-service": "winser -i",
-    "uninstall-windows-service": "winser -r"
+    "install-windows-service": "winser-extended -i",
+    "uninstall-windows-service": "winser-extended -r"
   }
 ```
 
